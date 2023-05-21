@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model NrcTaskWeb.Models.DbModels.DataSample
+
+@using (Html.BeginForm("AddData", "Data"))
+{
+    <br />
+    if (Model.IsFailed)
+    {
+        <div class="col-md-5">
+            <h3 style="color:red">Failed Saving Sample</h3>
+        </div>
+        <br />
+    }
+
+    <div class="form-group">
+        <label>Members Number</label>
+        @Html.TextBoxFor(m => m.Members, "", new { @placeholder = "Members number", style = "margin-right:15px", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label>Divisions Number</label>
+        @Html.TextBoxFor(m => m.Divisions, "", new { @placeholder = "Divisions number", style = "margin-right:15px", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label>Group Name</label>
+        @Html.TextBoxFor(m => m.GroupName, "", new { @placeholder = "Group name", style = "margin-right:15px" })
+    </div>
+
+    <div class="form-group">
+        <label>Captin Name</label>
+        @Html.TextBoxFor(m => m.CaptinName, "", new { @placeholder = "Captin name", style = "margin-right:15px" })
+        @Html.ValidationMessageFor(m => m.CaptinName)
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="margin-top:15px">Save</button>
+}
